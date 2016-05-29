@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    
+</head>
+<body>
+
+<script>
+
+function br() {document.write('<br />')}
+
+// REPEAED MEASURES ANOVA
+
+var treatments = 3; //columns
+var subjects = 3; //rows
+
+var data = [
+	0,  3,  6,  
+	4,  6,  8,  
+	2,  6,  10, 
+];
+
+var observations = data.length; // AKA 'N'
+
+var subjectTotals = [];
+for(var i=0, x=-1; i<data.length; i ++) {
+	if(i%treatments === 0) x ++;
+	if(subjectTotals[x] == undefined) subjectTotals[x] = 0;
+	subjectTotals[x] += data[i];
+}
+
+var groupTotals = [];
+for(var i=0; i<data.length; i ++) {
+	if(groupTotals[i%subjects] == undefined) groupTotals[i%subjects] = 0;
+	groupTotals[i%subjects] += data[i];
+}
+
+console.log(subjectTotals);
+console.log(groupTotals);
+
+var grandMean = subjectTotals.reduce(function(prev, current) { return prev+current }, 0);
+
+/*
+var totalSubjects = 0;
+for(var i=0; i < treatments; i ++) {
+	totalSubjects += Math.pow(subjectTotals[i], 2) / treatments;
+}
+
+document.write('Total Subjects: '+totalSubjects); br();
+
+var totalsMean = Math.pow(grandMean, 2) / subjects;
+
+document.write('Totals Mean: '+totalsMean);br();
+
+var ssSubject = totalSubjects - totalsMean;
+
+document.write('SS Subject: '+ssSubject);br();
+
+
+
+var ssSubject = 0;
+for(var i=0; i < treatments; i ++) {
+	ssSubject += Math.pow( subjectTotals[i]/treatments - grandMean/subjects  , 2);
+}
+
+ssSubject *= treatments;
+
+br();
+document.write('SS Subject: '+ssSubject);br();
+*/
+
+br();
+document.write('SS Subject: '+ (   3*(  Math.pow(3-5, 2) + Math.pow(6-5, 2) + Math.pow(6-5, 2) )  ));br();
+
+
+
+</script>
+
+
+
+</body>
