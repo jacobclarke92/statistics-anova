@@ -1,6 +1,9 @@
 import ANOVA from './anova'
+import Graph from './graph'
+import { pr, tr, printDataTable } from './utils'
 
-const conditions = ['0ms', '100ms', '200ms', '300ms'];
+
+const conditions = [0, 100, 200, 300];
 const data = [
 	16,	31,	56,	45,
 	15,	29,	31,	35,
@@ -8,19 +11,23 @@ const data = [
 	8,	12,	18,	15,
 ];
 
-const myANOVA = new ANOVA(conditions, data);
-console.log('Subject totals:', myANOVA.getSubjectTotals());
-console.log('Condition totals:', myANOVA.getConditionTotals());
-console.log('Subject means:', myANOVA.getSubjectMeans());
-console.log('Condition means:', myANOVA.getConditionMeans());
-console.log('Grand mean:', myANOVA.getGrandMean());
-console.log('ssTotal:', myANOVA.getSumOfSquaresTotal());
-console.log('ssSubjects:', myANOVA.getSumOfSquaresSubjects());
-console.log('ssBetween:', myANOVA.getSumOfSquaresBetween());
-console.log('ssWithin:', myANOVA.getSumOfSquaresWithin());
-console.log('dfBetween:', myANOVA.getDegreesOfFreedomBetween());
-console.log('dfError:', myANOVA.getDegreesOfFreedomError());
-console.log('F:', myANOVA.getF());
-console.log('Critical F (0.05):', myANOVA.getCriticalF(0.05));
-console.log('Critical F (0.01):', myANOVA.getCriticalF(0.01));
-console.log('Upper Probability of F:', myANOVA.getUpperProbabilityOfF());
+const myANOVA = new ANOVA(data, conditions, 'ms', 'nausia');
+
+printDataTable(myANOVA);
+
+document.write('<table border="1" cellspacing="0" cellpadding="5" class="col1-bold"><tbody>');
+tr('Subject totals', myANOVA.getSubjectTotals());
+tr('Condition totals', myANOVA.getConditionTotals());
+tr('Subject means', myANOVA.getSubjectMeans());
+tr('Condition means', myANOVA.getConditionMeans());
+tr('Grand mean', myANOVA.getGrandMean());
+tr('Sum of sqaures Total', myANOVA.getSumOfSquaresTotal());
+tr('Sum of sqaures Subjects', myANOVA.getSumOfSquaresSubjects());
+tr('Sum of sqaures Between', myANOVA.getSumOfSquaresBetween());
+tr('Sum of sqaures Within', myANOVA.getSumOfSquaresWithin());
+tr('dfBetween', myANOVA.getDegreesOfFreedomBetween());
+tr('dfError', myANOVA.getDegreesOfFreedomError());
+tr('F', myANOVA.getF());
+tr('Critical F (0.05)', myANOVA.getCriticalF(0.05));
+tr('Critical F (0.01)', myANOVA.getCriticalF(0.01));
+document.write('</tbody></table>')

@@ -2,82 +2,33 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Statistics ANOVA</title>
-    <script type="text/javascript" src="scripts.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=UTF8">
+    <style type="text/css">
+    	body {
+    		margin: 0 1rem;
+    		padding: 0;
+    		font-family: monospace;
+    	}
+    	table {
+    		margin: 1rem 0;
+    		table-layout: fixed;
+    	}
+    	table, td {
+    		border: 1px solid #333338;
+    	}
+    	table thead td:first-of-type {
+    		background-color: #333338;
+    		color: white;
+    	}
+    	.col1-bold tr td:first-of-type {
+    		font-weight: bold;
+    	}
+    </style>
 </head>
 <body>
 
-<script>
+<h1 align="center">ANOVA</h1>
 
-function br() {document.write('<br />')}
-
-// REPEAED MEASURES ANOVA
-/*
-var conditions = ['0ms', '100ms', '200ms', '300ms']; //columns
-
-var data = [
-	16,	31,	56,	45,
-	15,	29,	31,	35,
-	18,	15,	25,	21,
-	8,	12,	18,	15,
-];
-
-var subjects = data.length/conditions.length;
-var observations = data.length; // AKA 'N'
-
-var subjectTotals = [];
-for(var i=0, x=-1; i<data.length; i ++) {
-	if(i%conditions.length.length === 0) x ++;
-	if(subjectTotals[x] == undefined) subjectTotals[x] = 0;
-	subjectTotals[x] += data[i];
-}
-
-var groupTotals = [];
-for(var i=0; i<data.length; i ++) {
-	if(groupTotals[i%subjects] == undefined) groupTotals[i%subjects] = 0;
-	groupTotals[i%subjects] += data[i];
-}
-
-console.log(subjectTotals);
-console.log(groupTotals);
-
-var grandMean = subjectTotals.reduce(function(prev, current) { return prev+current }, 0);
-
-/*
-var totalSubjects = 0;
-for(var i=0; i < conditions.length; i ++) {
-	totalSubjects += Math.pow(subjectTotals[i], 2) / conditions.length;
-}
-
-document.write('Total Subjects: '+totalSubjects); br();
-
-var totalsMean = Math.pow(grandMean, 2) / subjects;
-
-document.write('Totals Mean: '+totalsMean);br();
-
-var ssSubject = totalSubjects - totalsMean;
-
-document.write('SS Subject: '+ssSubject);br();
-
-
-
-var ssSubject = 0;
-for(var i=0; i < treatments; i ++) {
-	ssSubject += Math.pow( subjectTotals[i]/treatments - grandMean/subjects  , 2);
-}
-
-ssSubject *= treatments;
-
-br();
-document.write('SS Subject: '+ssSubject);br();
-
-
-br();
-document.write('SS Subject: '+ (   3*(  Math.pow(3-5, 2) + Math.pow(6-5, 2) + Math.pow(6-5, 2) )  ));br();
-*/
-
-
-</script>
-
-
-
+<script type="text/javascript" src="scripts.js"></script>
 </body>
+</html>

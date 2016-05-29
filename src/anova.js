@@ -1,14 +1,17 @@
-import { fprob, fdistr } from './utils'
+import { fprob, fdistr } from './stat_utils'
 
 export default class ANOVA {
 	
 	/**
-	 * @conditions  {String[]}
-	 * @data  		{Number[]}
+	 * @param  {Number[]}	- Data
+	 * @param  {Number[]}	- Conditions/treatments
+	 * @param  {String}		- Measurement e.g. ms
 	 */
-	constructor(conditions = [], data = []) {
-		this.conditions = conditions;
+	constructor(data = [], conditions = [], conditionMeasurement = '', subjectMeasurement = '') {
 		this.data = data;
+		this.conditions = conditions;
+		this.subjectMeasurement = subjectMeasurement;
+		this.conditionMeasurement = conditionMeasurement;
 		this.subjects = data.length/conditions.length;
 		this.observations = data.length;  // AKA 'N'
 	}
