@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    
+    <title>Statistics ANOVA</title>
+    <script type="text/javascript" src="scripts.js"></script>
 </head>
 <body>
 
@@ -10,21 +11,22 @@
 function br() {document.write('<br />')}
 
 // REPEAED MEASURES ANOVA
-
-var treatments = 3; //columns
-var subjects = 3; //rows
+/*
+var conditions = ['0ms', '100ms', '200ms', '300ms']; //columns
 
 var data = [
-	0,  3,  6,  
-	4,  6,  8,  
-	2,  6,  10, 
+	16,	31,	56,	45,
+	15,	29,	31,	35,
+	18,	15,	25,	21,
+	8,	12,	18,	15,
 ];
 
+var subjects = data.length/conditions.length;
 var observations = data.length; // AKA 'N'
 
 var subjectTotals = [];
 for(var i=0, x=-1; i<data.length; i ++) {
-	if(i%treatments === 0) x ++;
+	if(i%conditions.length.length === 0) x ++;
 	if(subjectTotals[x] == undefined) subjectTotals[x] = 0;
 	subjectTotals[x] += data[i];
 }
@@ -42,8 +44,8 @@ var grandMean = subjectTotals.reduce(function(prev, current) { return prev+curre
 
 /*
 var totalSubjects = 0;
-for(var i=0; i < treatments; i ++) {
-	totalSubjects += Math.pow(subjectTotals[i], 2) / treatments;
+for(var i=0; i < conditions.length; i ++) {
+	totalSubjects += Math.pow(subjectTotals[i], 2) / conditions.length;
 }
 
 document.write('Total Subjects: '+totalSubjects); br();
@@ -67,11 +69,11 @@ ssSubject *= treatments;
 
 br();
 document.write('SS Subject: '+ssSubject);br();
-*/
+
 
 br();
 document.write('SS Subject: '+ (   3*(  Math.pow(3-5, 2) + Math.pow(6-5, 2) + Math.pow(6-5, 2) )  ));br();
-
+*/
 
 
 </script>
