@@ -82,8 +82,8 @@
 	(0, _utils.tr)('Sum of sqaures Subjects', myANOVA.getSumOfSquaresSubjects());
 	(0, _utils.tr)('Sum of sqaures Between', myANOVA.getSumOfSquaresBetween());
 	(0, _utils.tr)('Sum of sqaures Within', myANOVA.getSumOfSquaresWithin());
-	(0, _utils.tr)('dfBetween', myANOVA.getDegreesOfFreedomBetween());
-	(0, _utils.tr)('dfError', myANOVA.getDegreesOfFreedomError());
+	(0, _utils.tr)('Degrees of freedom Between', myANOVA.getDegreesOfFreedomBetween());
+	(0, _utils.tr)('Degrees of freedom Error', myANOVA.getDegreesOfFreedomError());
 	(0, _utils.tr)('F', myANOVA.getF());
 	(0, _utils.tr)('Critical F (0.05)', myANOVA.getCriticalF(0.05));
 	(0, _utils.tr)('Critical F (0.01)', myANOVA.getCriticalF(0.01));
