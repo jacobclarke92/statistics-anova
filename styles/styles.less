@@ -1,5 +1,6 @@
 @import "./theme.less";
 @import "./base/table.less";
+@import "./base/forms.less";
 
 @import "./components/navigation.less";
 
@@ -24,4 +25,21 @@ h1,h2,h3,h4,h5,h6 {
 		flex: 1 100%;
 		padding: 0 1rem;
 	} 
+
+	main.page {
+		padding-top: 1rem;
+	}
+}
+
+
+.variable-levels {
+	margin-left: 1rem;
+}
+
+.independant-variables {
+	display: flex;
+	justify-content: space-between;
+	.independant-variable {
+		flex: 1 auto;
+	}
 }

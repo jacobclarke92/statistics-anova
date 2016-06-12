@@ -1,4 +1,6 @@
 import React, { Component, PropTypes } from 'react'
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 import ANOVA from './classes/anova'
 import Graph from './classes/graph'
@@ -6,6 +8,7 @@ import Graph from './classes/graph'
 import Navigation from './components/Navigation'
 import DataTable from './components/DataTable'
 import KeyValueTable from './components/KeyValueTable'
+import DataInput from './components/DataInput'
 
 
 const conditions = [0, 100, 200, 300];
@@ -16,7 +19,7 @@ const data = [
 	8,	12,	18,	15,
 ];
 
-export default class App extends Component {
+class App extends Component {
 
 	constructor(props) {
 		super(props);
@@ -51,7 +54,10 @@ export default class App extends Component {
 
 				<Navigation />
 				<main className="page">
-					Hallo
+
+
+					<DataInput onChange={() => {}} />
+					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 					<DataTable anova={anova} />
 					<KeyValueTable data={anovaData} />
 				</main>
@@ -60,3 +66,4 @@ export default class App extends Component {
 		)
 	}
 }
+export default DragDropContext(HTML5Backend)(App);
