@@ -1,0 +1,27 @@
+@import "./theme.less";
+@import "./base/table.less";
+
+@import "./components/navigation.less";
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-weight: 100;
+	letter-spacing: 0.05rem;
+}
+
+.app {
+
+	display: flex;
+	flex-flow: row wrap;
+
+	header.navigation,
+	main.page {
+		flex: 1 100%;
+		padding: 0 1rem;
+	} 
+}

@@ -1,6 +1,9 @@
-import ANOVA from './anova'
-import Graph from './graph'
-import { pr, tr, printDataTable } from './utils'
+import React, { Component, PropTypes } from 'react'
+import ANOVA from './classes/anova'
+import Graph from './classes/graph'
+import { pr, tr, printDataTable } from './utils/domUtils'
+
+import Navigation from './components/Navigation'
 
 
 const conditions = [0, 100, 200, 300];
@@ -31,3 +34,18 @@ tr('F', myANOVA.getF());
 tr('Critical F (0.05)', myANOVA.getCriticalF(0.05));
 tr('Critical F (0.01)', myANOVA.getCriticalF(0.01));
 document.write('</tbody></table>')
+
+export default class App extends Component {
+	render() {
+		return (
+			<div className="app">
+
+				<Navigation />
+				<main className="page">
+					Hallo
+				</main>
+
+			</div>
+		)
+	}
+}

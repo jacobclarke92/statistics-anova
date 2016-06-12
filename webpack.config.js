@@ -3,18 +3,18 @@ var webpack = require('webpack');
 
 var babelLoaderSettings = JSON.stringify({
 	cacheDirectory: true,
-	presets: ['es2015'],
+	presets: ['es2015', 'react', 'stage-0'],
 });
 
 module.exports = {
 	devtool: '#sourcemap',
 	entry: {
 		scripts: [
-			'./src/index.js'
+			'./scripts/index.js'
 		],
 	},
 	output: {
-		path: path.join(__dirname),
+		path: path.join(__dirname, 'webroot', 'dist'),
 		filename: '[name].js',
 	},
 	plugins: [
@@ -22,7 +22,7 @@ module.exports = {
 	],
 	resolve: {
 		root: [
-			path.resolve('./app/')
+			path.resolve('./scripts/')
 		]
 	},
 	module: {
@@ -30,7 +30,7 @@ module.exports = {
 			{
 				test: /\.jsx?$/,
 				loaders: ['babel?'+babelLoaderSettings],
-				include: [path.join(__dirname, 'src')]
+				include: [path.join(__dirname, 'scripts')]
 			},
 		],
 	}

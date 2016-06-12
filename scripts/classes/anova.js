@@ -1,4 +1,4 @@
-import { fprob, fdistr } from './stat_utils'
+import { fprob, fdistr } from '../utils/statUtils'
 
 export default class ANOVA {
 	
