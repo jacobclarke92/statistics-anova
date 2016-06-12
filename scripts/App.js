@@ -1,9 +1,11 @@
 import React, { Component, PropTypes } from 'react'
+
 import ANOVA from './classes/anova'
 import Graph from './classes/graph'
-import { pr, tr, printDataTable } from './utils/domUtils'
 
 import Navigation from './components/Navigation'
+import DataTable from './components/DataTable'
+import KeyValueTable from './components/KeyValueTable'
 
 
 const conditions = [0, 100, 200, 300];
@@ -14,35 +16,44 @@ const data = [
 	8,	12,	18,	15,
 ];
 
-const myANOVA = new ANOVA(data, conditions, 'ms', 'nausia');
-
-printDataTable(myANOVA);
-
-document.write('<table border="1" cellspacing="0" cellpadding="5" class="col1-bold"><tbody>');
-tr('Subject totals', myANOVA.getSubjectTotals());
-tr('Condition totals', myANOVA.getConditionTotals());
-tr('Subject means', myANOVA.getSubjectMeans());
-tr('Condition means', myANOVA.getConditionMeans());
-tr('Grand mean', myANOVA.getGrandMean());
-tr('Sum of sqaures Total', myANOVA.getSumOfSquaresTotal());
-tr('Sum of sqaures Subjects', myANOVA.getSumOfSquaresSubjects());
-tr('Sum of sqaures Between', myANOVA.getSumOfSquaresBetween());
-tr('Sum of sqaures Within', myANOVA.getSumOfSquaresWithin());
-tr('Degrees of freedom Between', myANOVA.getDegreesOfFreedomBetween());
-tr('Degrees of freedom Error', myANOVA.getDegreesOfFreedomError());
-tr('F', myANOVA.getF());
-tr('Critical F (0.05)', myANOVA.getCriticalF(0.05));
-tr('Critical F (0.01)', myANOVA.getCriticalF(0.01));
-document.write('</tbody></table>')
-
 export default class App extends Component {
+
+	constructor(props) {
+		super(props);
+		const anova = new ANOVA(data, conditions, 'ms', 'nausia');
+		const anovaData = {
+			'Subject totals': 				anova.getSubjectTotals(),
+			'Condition totals': 			anova.getConditionTotals(),
+			'Subject means': 				anova.getSubjectMeans(),
+			'Condition means': 				anova.getConditionMeans(),
+			'Grand mean': 					anova.getGrandMean(),
+			'Sum of sqaures Total': 		anova.getSumOfSquaresTotal(),
+			'Sum of sqaures Subjects': 		anova.getSumOfSquaresSubjects(),
+			'Sum of sqaures Between': 		anova.getSumOfSquaresBetween(),
+			'Sum of sqaures Within': 		anova.getSumOfSquaresWithin(),
+			'Degrees of freedom Between': 	anova.getDegreesOfFreedomBetween(),
+			'Degrees of freedom Error': 	anova.getDegreesOfFreedomError(),
+			'F': 							anova.getF(),
+			'Critical F (0.05)': 			anova.getCriticalF(0.05),
+			'Critical F (0.01)': 			anova.getCriticalF(0.01),
+		};
+
+		this.state = {
+			anova,
+			anovaData,
+		};
+	}
+
 	render() {
+		const { anova, anovaData } = this.state;
 		return (
 			<div className="app">
 
 				<Navigation />
 				<main className="page">
 					Hallo
+					<DataTable anova={anova} />
+					<KeyValueTable data={anovaData} />
 				</main>
 
 			</div>
