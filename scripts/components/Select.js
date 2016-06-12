@@ -9,9 +9,9 @@ export default class Select extends Component {
 	};
 
 	render() {
-		const { options, empty, onChange } = this.props;
+		const { options, empty, onChange, ...rest } = this.props;
 		return (
-			<select onChange={event => onChange(event.target.value)}>
+			<select {...rest} onChange={event => onChange(event.target.value)}>
 				<option value={null}>{empty}</option>
 				{options.map((option, i) => 
 					<option key={i} value={option.value}>{option.text}</option>
